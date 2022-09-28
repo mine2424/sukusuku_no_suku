@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2 class="m-5">データ取得</h2>
+<form class="m-5" action="/scraping" method='POST'>
+    <div class="form-group pb-3">
+        <label for="detail">URL : </label>
+        <input type="text" class="form-control" name="init_url">
+        <small id="title-help" class="form-text text-muted">URLを入力してください。</small>
+    </div>
+    <div class="form-group pb-3">
+        <label for="detail">tag : </label>
+        <input type="text" class="form-control" name="init_tag_name">
+        <small id="title-help" class="form-text text-muted">tagを入力してください。</small>
+    </div>
+    <div class="form-group pb-3">
+        <label for="detail">attrs : </label>
+        <input type="text" class="form-control" name="init_attrs_key">
+        <small id="title-help" class="form-text text-muted">attrsのkeyを入力してください。</small>
+        <input type="text" class="form-control" name="init_attrs_value">
+        <small id="title-help" class="form-text text-muted">attrsのvalueを入力してください。</small>
+    </div>
+    <button type="submit" class="btn btn-primary">scraping</button>
+    <a class="btn btn-outline-primary" href="/" role="button">back</a>
+</form>
+
+<div class="pt-5">
+    
+    <p>input info: {{ input_data }}</p>
+
+    <ul class="m-2">
+        {% for post in posts %}
+            <li class="pt-4 fs-6">{{ post.text }}</li>
+            <li class="pt-4 fs-6">{{ post.html }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
